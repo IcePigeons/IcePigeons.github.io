@@ -13,21 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="http://example.com/2023/09/04/hello-world/"/>
+    <link rel="canonical" href="http://example.com/2023/09/11/java模块化-1-0-如何裁剪jre减少体积/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub . Q">
+        <meta name="description" content="Demo 示例 jmod 文件是用来打包 jre 的  目录结构 12345678910Idea目录结构(maven项目&#x2F;普通java项目)-java-module  -src&#x2F;main&#x2F;java  	-com&#x2F;example&#x2F;Main.java  	-module-java.info  -resources-output #输出目录-bin 	#编译后的文件-hello.jar	#jar包-he">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2023/09/04/hello-world/index.html">
+<meta property="og:title" content="Java模块化[1.0]-如何裁剪Jre减少体积">
+<meta property="og:url" content="http://example.com/2023/09/11/Java%E6%A8%A1%E5%9D%97%E5%8C%96-1-0-%E5%A6%82%E4%BD%95%E8%A3%81%E5%89%AAJre%E5%87%8F%E5%B0%91%E4%BD%93%E7%A7%AF/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub . Q">
+<meta property="og:description" content="Demo 示例 jmod 文件是用来打包 jre 的  目录结构 12345678910Idea目录结构(maven项目&#x2F;普通java项目)-java-module  -src&#x2F;main&#x2F;java  	-com&#x2F;example&#x2F;Main.java  	-module-java.info  -resources-output #输出目录-bin 	#编译后的文件-hello.jar	#jar包-he">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-04T03:20:25.299Z">
-<meta property="article:modified_time" content="2023-09-04T03:20:25.300Z">
+<meta property="article:published_time" content="2023-09-11T08:11:08.000Z">
+<meta property="article:modified_time" content="2023-09-14T08:52:43.497Z">
 <meta property="article:author" content="BGZ">
+<meta property="article:tag" content="模块化">
 <meta name="twitter:card" content="summary">
     
     
@@ -40,7 +41,7 @@
     
     <title>
         
-            Hello World -
+            Java模块化[1.0]-如何裁剪Jre减少体积 -
         
         仰望星空
     </title>
@@ -311,7 +312,7 @@
 
         <div class="article-title">
             
-                <h1 class="article-title-regular">Hello World</h1>
+                <h1 class="article-title-regular">Java模块化[1.0]-如何裁剪Jre减少体积</h1>
             
             </div>
             
@@ -331,27 +332,54 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-09-04 11:20:25</span>
-        <span class="mobile">2023-09-04 11:20:25</span>
+        <span class="desktop">2023-09-11 16:11:08</span>
+        <span class="mobile">2023-09-11 16:11:08</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-09-04 11:20:25</span>
-            <span class="mobile">2023-09-04 11:20:25</span>
+            <span class="desktop">2023-09-14 16:52:43</span>
+            <span class="mobile">2023-09-14 16:52:43</span>
             <span class="hover-info">更新</span>
         </span>
     
 
     
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Java/">Java</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/">模块化</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -366,19 +394,58 @@
 
 
         <div class="article-content markdown-body">
-            <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+            <h3 id="Demo-示例"><a href="#Demo-示例" class="headerlink" title="Demo 示例"></a>Demo 示例</h3><ul>
+<li>jmod 文件是用来打包 jre 的</li>
+</ul>
+<p>目录结构</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Idea目录结构(maven项目/普通java项目)</span><br><span class="line">-java-module</span><br><span class="line">  -src/main/java</span><br><span class="line">  	-com/example/Main.java</span><br><span class="line">  	-module-java.info</span><br><span class="line">  -resources</span><br><span class="line">-output #输出目录</span><br><span class="line">-bin 	#编译后的文件</span><br><span class="line">-hello.jar	#jar包</span><br><span class="line">-hello.jmod	#jmod</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
+<p>Main.java</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
+<p>module-info.java</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module com.example &#123;</span><br><span class="line">    exports com.example;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<ul>
+<li><p>编译</p>
+<ul>
+<li>只需基础 jdk 的包，则直接执行</li>
+</ul>
+<p><code> javac -d .\bin .\src\main\java\module-info.java .\src\main\java\com\example\*.java</code></p>
+<ul>
+<li>引入第三方包，设置–module-path 依赖包来源地址，–add-modules 设置依赖包名称<ul>
+<li>maven 项目可以通过<strong>mvn dependency:copy-dependencies -DoutputDirectory&#x3D;lib</strong>直接导出项目依赖的包到根目录 lib 文件夹下</li>
+</ul>
+</li>
+</ul>
+<p><code> javac --module-path .\lib --add-modules fastjson,javafx.controls -d .\bin .\src\main\java\module-info.java .\src\main\java\com\example\*.java</code></p>
+</li>
+<li><p>打包</p>
+<p><code> jar --create --file hello.jar --main-class com.example.Main -C bin .</code></p>
+</li>
+<li><p>创建模块</p>
+<p><code>jmod create --class-path .\hello.jar hello.jmod</code></p>
+</li>
+<li><p>打包 Jre</p>
+<p><code> jlink --module-path .\hello.jmod --add-modules java.base,com.example --output output</code></p>
+</li>
+</ul>
+<hr>
+<p>参考文章：<a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/479619633" >https://zhuanlan.zhihu.com/p/479619633 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>模块化对于第三包的处理：需要对其进行模块化</p>
+<ul>
+<li>虽然有自动模块和未命名模块的操作，但是 jlink 不支持自动模块打包，也就是说还是需要对非模块化包进行模块化才能打包</li>
+</ul>
+<hr>
+<h3 id="打包解决方案"><a href="#打包解决方案" class="headerlink" title="打包解决方案"></a>打包解决方案</h3><h4 id="TimiExe4FX-第三方软件"><a href="#TimiExe4FX-第三方软件" class="headerlink" title="TimiExe4FX(第三方软件)"></a>TimiExe4FX(第三方软件)</h4><ul>
+<li>实现打包纯 exe 启动器</li>
+</ul>
+<h4 id="maven-打包插件"><a href="#maven-打包插件" class="headerlink" title="maven 打包插件"></a>maven 打包插件</h4><p>开源地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/fvarrui/JavaPackager" >https://github.com/fvarrui/JavaPackager <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<ol>
+<li>引入插件</li>
+<li>执行 mvn package</li>
+</ol>
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.github.fvarrui<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javapackager<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>package<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 启动类 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>path.to.your.mainClass<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 绑定裁剪jre --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">bundleJre</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bundleJre</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 生成exe安装包,需要安装Wix或者ISCC软件 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">generateInstaller</span>&gt;</span>true<span class="tag">&lt;/<span class="name">generateInstaller</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 管理员权限启动 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">administratorRequired</span>&gt;</span>false<span class="tag">&lt;/<span class="name">administratorRequired</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 平台 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">platform</span>&gt;</span>auto|linux|mac|windows<span class="tag">&lt;/<span class="name">platform</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!-- 添加资源打包到根目录 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">additionalResources</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 可以包含多个 --&gt;</span></span><br><span class="line">            		<span class="tag">&lt;<span class="name">additionalResource</span>&gt;</span>src/main/resources/config.properties<span class="tag">&lt;/<span class="name">additionalResource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">additionalResources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">linuxConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">linuxConfig</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">macConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">macConfig</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">winConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">winConfig</span>&gt;</span></span><br><span class="line">                [...]</span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
 
         </div>
 
@@ -386,18 +453,18 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Hello World</li>
+        <li><strong>标题:</strong> Java模块化[1.0]-如何裁剪Jre减少体积</li>
         <li><strong>作者:</strong> 星尘X</li>
         <li><strong>创建于
-                :</strong> 2023-09-04 11:20:25</li>
+                :</strong> 2023-09-11 16:11:08</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-09-04 11:20:25
+                    :</strong> 2023-09-14 16:52:43
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2023/09/04/hello-world/
+            <strong>链接:</strong> https://redefine.ohevan.com/2023/09/11/Java模块化-1-0-如何裁剪Jre减少体积/
         </li>
         <li>
             <strong>
@@ -415,27 +482,35 @@
         
 
         
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E6%A8%A1%E5%9D%97%E5%8C%96/">#模块化</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
 
         
 
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                        rel="prev"
-                        href="/2023/09/04/%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%9E%B6%E5%B7%A5%E5%85%B7/"
+                
+                    <div class="article-next">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/09/06/CentOs%E5%A4%9A%E7%89%88%E6%9C%ACPython%E7%8E%AF%E5%A2%83%E5%85%B1%E5%AD%98/"
                         >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">自动化上下架工具</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="post-nav-title-item">Centos多版本Python环境共存</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
                             </span>
                         </a>
                     </div>
-                
                 
             </div>
         
@@ -506,8 +581,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Hello World</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <div class="page-title">Java模块化[1.0]-如何裁剪Jre减少体积</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo-%E7%A4%BA%E4%BE%8B"><span class="nav-text">Demo 示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-text">打包解决方案</span></a></li></ol>
 
     </div>
 </div>
