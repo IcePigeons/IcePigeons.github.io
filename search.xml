@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Hello World</title>
-    <url>/2023/09/04/hello-world/</url>
+    <url>/IcePigeons.github.io/2023/09/04/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
 
@@ -20,7 +20,7 @@
   </entry>
   <entry>
     <title>自动化上下架工具</title>
-    <url>/2023/09/04/%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%9E%B6%E5%B7%A5%E5%85%B7/</url>
+    <url>/IcePigeons.github.io/2023/09/04/%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%9E%B6%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>依赖于 springboot 和 mybatisPlus 实现的一个自动定时扫描上下架时间，并切换数据状态的工具，主要是减少开发中的重复代码，能够更专注于写更多有意义的代码，并且简历上也能好看点。</p>
 <h2 id="开发版本"><a href="#开发版本" class="headerlink" title="开发版本"></a>开发版本</h2><ul>
 <li>JDK1.8</li>
@@ -62,7 +62,7 @@
   </entry>
   <entry>
     <title>Centos多版本Python环境共存</title>
-    <url>/2023/09/06/CentOs%E5%A4%9A%E7%89%88%E6%9C%ACPython%E7%8E%AF%E5%A2%83%E5%85%B1%E5%AD%98/</url>
+    <url>/IcePigeons.github.io/2023/09/06/CentOs%E5%A4%9A%E7%89%88%E6%9C%ACPython%E7%8E%AF%E5%A2%83%E5%85%B1%E5%AD%98/</url>
     <content><![CDATA[<h3 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h3><ol>
 <li>安装ssl</li>
 <li>安装python</li>
@@ -96,7 +96,7 @@
   </entry>
   <entry>
     <title>Java模块化[1.0]-如何裁剪Jre减少体积</title>
-    <url>/2023/09/11/Java%E6%A8%A1%E5%9D%97%E5%8C%96-1-0-%E5%A6%82%E4%BD%95%E8%A3%81%E5%89%AAJre%E5%87%8F%E5%B0%91%E4%BD%93%E7%A7%AF/</url>
+    <url>/IcePigeons.github.io/2023/09/11/Java%E6%A8%A1%E5%9D%97%E5%8C%96-1-0-%E5%A6%82%E4%BD%95%E8%A3%81%E5%89%AAJre%E5%87%8F%E5%B0%91%E4%BD%93%E7%A7%AF/</url>
     <content><![CDATA[<h3 id="Demo-示例"><a href="#Demo-示例" class="headerlink" title="Demo 示例"></a>Demo 示例</h3><ul>
 <li>jmod 文件是用来打包 jre 的</li>
 </ul>
@@ -155,6 +155,120 @@
       </categories>
       <tags>
         <tag>模块化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring事务场景</title>
+    <url>/IcePigeons.github.io/2023/10/27/%E4%BA%8B%E5%8A%A1%E5%A4%B1%E6%95%88%E5%9C%BA%E6%99%AF/</url>
+    <content><![CDATA[<div align="center">
+    <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://cdn.jsdelivr.net/gh/IcePigeons/img/blog/175889.jpg"
+                     
+                >  
+</div>
+
+<p>Springboot 2.5.14</p>
+<p>Spring 5.3.20</p>
+<h3 id="Other-knowledge"><a href="#Other-knowledge" class="headerlink" title="Other knowledge"></a>Other knowledge</h3><p>什么是 EJB？</p>
+<p>什么是 CMT？</p>
+<h3 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a>Notice</h3><ul>
+<li>Spring事务不支持远程调用传播(涉及分布式事务)</li>
+</ul>
+<h2 id="Transaction-failure"><a href="#Transaction-failure" class="headerlink" title="Transaction failure"></a>Transaction failure</h2><h4 id="Transaction"><a href="#Transaction" class="headerlink" title="@Transaction"></a>@Transaction</h4><p>声明式事务</p>
+<h5 id="事务失效场景"><a href="#事务失效场景" class="headerlink" title="事务失效场景"></a>事务失效场景</h5><ul>
+<li><p>访问权限非public（无法代理访问到）</p>
+<ul>
+<li><p>方法final&#x2F;static修饰</p>
+<ul>
+<li>动态代理无法重写该方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>类中方法内部调用(this调用其他方法)</p>
+<ul>
+<li>调用自己的内部方法，不走AOP代理</li>
+<li>未被spring管理</li>
+</ul>
+</li>
+<li><p>多线程调用</p>
+<ul>
+<li><p>同一个事务指的是同一个数据库连接，多线程里面两个线程会有多个数据连接，事务失效</p>
+</li>
+<li><p>表&#x2F;数据库不支持事务</p>
+<ul>
+<li>如表的引擎设置了MyISAM则不支持事务</li>
+</ul>
+</li>
+<li><p>spring要自己开启事务，springboot默认开启</p>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//内部调用示例</span></span><br><span class="line"><span class="comment">//1.通过新开Service 2.自导入解决(涉及循环依赖问题，spring三级缓存解决) 3.获取代理对象调用方法</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(UserModel userModel)</span> &#123;</span><br><span class="line">        userMapper.insertUser(userModel);</span><br><span class="line">        updateStatus(userModel);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Transactional</span>	<span class="comment">//事务失效</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateStatus</span><span class="params">(UserModel userModel)</span> &#123;</span><br><span class="line">        doSameThing();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//推荐解决方案-直接获取代理对象调用</span></span><br><span class="line"><span class="meta">@Servcie</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ServiceA</span> &#123;</span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">save</span><span class="params">(User user)</span> &#123;</span><br><span class="line">         queryData1();</span><br><span class="line">         queryData2();</span><br><span class="line">        ((ServiceA)AopContext.currentProxy()).doSave(user);	<span class="comment">//通过代理调用</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Transactional(rollbackFor=Exception.class)</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doSave</span><span class="params">(User user)</span> &#123;</span><br><span class="line">       addData1();</span><br><span class="line">       updateData2();</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- spring配置事务管理器 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;</span> <span class="attr">id</span>=<span class="string">&quot;transactionManager&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;dataSource&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">&quot;advice&quot;</span> <span class="attr">transaction-manager</span>=<span class="string">&quot;transactionManager&quot;</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">&quot;*&quot;</span> <span class="attr">propagation</span>=<span class="string">&quot;REQUIRED&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!-- 用切点把事务切进去 --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">&quot;execution(* com.susan.*.*(..))&quot;</span> <span class="attr">id</span>=<span class="string">&quot;pointcut&quot;</span>/&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">&quot;advice&quot;</span> <span class="attr">pointcut-ref</span>=<span class="string">&quot;pointcut&quot;</span>/&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span> </span><br></pre></td></tr></table></figure></div>
+
+<hr>
+<h5 id="事务不回滚"><a href="#事务不回滚" class="headerlink" title="事务不回滚"></a>事务不回滚</h5><ul>
+<li>错误地设置传播特性<ul>
+<li>事务挂起(Propagation.<strong>REQUIRES_NEW</strong>)导致外层事务不回滚</li>
+<li>事务嵌套导致内外层一起回滚</li>
+</ul>
+</li>
+<li>捕获吞了异常，未抛出</li>
+<li>手动抛了不触发回滚的异常<ul>
+<li>抛出必须是RuntimeException(事务默认回滚触发为Error或RuntimeException)</li>
+<li>如果使用Exception，则可以修改rollbackFor使触发回滚的异常范围放大<ul>
+<li>@Transactional(rollbackFor &#x3D; Exception.class)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自定义了回滚异常<ul>
+<li>设置rollbackFor&#x3D;A.Exception后，如果事务里面触发其他异常(B.Exception)导致回滚失效</li>
+</ul>
+</li>
+<li>嵌套事务回滚多了<ul>
+<li>NESTED子事务异常，不捕获或捕获且抛出，那么外层也会回滚</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//对于事务里面捕获异常的处理方式</span></span><br><span class="line"><span class="comment">//1.try catch抛出异常-&gt;上层处理</span></span><br><span class="line"><span class="comment">//2.由上层进行try catch</span></span><br><span class="line"><span class="comment">//3.手动回滚：TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="meta">@Transactional</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(UserModel userModel)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            saveData(userModel);</span><br><span class="line">            updateData(userModel);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="comment">//不手动抛出导致外层事务不会滚</span></span><br><span class="line">            log.error(e.getMessage(), e);</span><br><span class="line">            <span class="comment">//throw new RuntimeException(&quot;再抛出异常,&quot;+e);</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h5 id="详解七类传播特性"><a href="#详解七类传播特性" class="headerlink" title="详解七类传播特性"></a>详解七类传播特性</h5><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line">REQUIRED 当前上下文存在事务则加入，否则创建一个事务【默认设置】</span><br><span class="line">SUPPORTS 当前上下文存在事务则加入，否则以非事务执行</span><br><span class="line">MANDATORY 当前上下文不存在事务则抛出异常[强制有事务]</span><br><span class="line">REQUIRES_NEW 每次都会新建一个事务，并且同时将上下文中的事务挂起，执行新建事务完成后，上下文事务恢复再执行[事务挂起]</span><br><span class="line">NOT_SUPPORTED 当前上下文中存在事务，则挂起当前事务，然后新的方法在没有事务的环境中执行。</span><br><span class="line">NEVER 当前上下文中存在事务则抛出异常，否则在无事务环境上执行代码[强制无事务]</span><br><span class="line">NESTED 如果当前上下文中存在事务，则嵌套事务执行，如果不存在事务，则新建事务。[事务嵌套]</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h6 id="Spring事务嵌套和事务挂起"><a href="#Spring事务嵌套和事务挂起" class="headerlink" title="Spring事务嵌套和事务挂起"></a>Spring事务嵌套和事务挂起</h6><ul>
+<li>NESTED：嵌套事务-父子事务（本质同一个事务，但和REQUIRED有区别）</li>
+<li>REQUIRED：本质同一个事务</li>
+<li>REQUIRES_NEW：上层事务挂起-开启新事务，本质不同事务(包含关系)</li>
+</ul>
+<ol>
+<li>REQUIRED和NESTED区别在于：调用方<strong>不抛出</strong>异常-<strong>NESTED子事务回滚，而父事务不回滚；而REQUIRED均回滚</strong></li>
+<li>REQUIRES_NEW和其他区别：NESTED&#x2F;REQUIRED父事务回滚全部回滚；而REQUIRES_NEW是两个独立事务，当父事务(调用方)回滚时不会影响子事务(被调用方)，但是子事务回滚，父事务必须回滚</li>
+<li>REQUIRED</li>
+</ol>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.调用方发生异常(1)，一起回滚</span></span><br><span class="line"><span class="comment">//2.被调用方发生异常(2)，调用方[捕获抛出/不捕获]一起回滚，[捕获不抛出]则调用方不回滚，只被调用方回滚</span></span><br><span class="line"><span class="comment">//调用方</span></span><br><span class="line"><span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testMain</span><span class="params">()</span>&#123;</span><br><span class="line">    A(a1);  <span class="comment">//方法A</span></span><br><span class="line">    testB();    <span class="comment">//调用testB</span></span><br><span class="line">    <span class="keyword">throw</span> Exception;     <span class="comment">//发生异常抛出(1)</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        testB();    <span class="comment">//调用testB</span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">        e.printStackTrace();	<span class="comment">//打印异常信息</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(e.getMessage());	<span class="comment">//是否抛出影响调用方的是否回滚(2)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//被调用方</span></span><br><span class="line"><span class="meta">@Transactional(propagation = Propagation.NESTED)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testB</span><span class="params">()</span>&#123;</span><br><span class="line">    B(b1);  <span class="comment">//方法B1</span></span><br><span class="line">    <span class="keyword">throw</span> Exception;     <span class="comment">//发生异常抛出(2)</span></span><br><span class="line">    B(b2); <span class="comment">//方法B2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.调用方发生异常(1)，不影响被调用方(独立两个事务)</span></span><br><span class="line"><span class="comment">//2.被调用方发生异常(2)，两者一起回滚(包含关系)，不管调用方是否try catch或抛出异常</span></span><br><span class="line"><span class="comment">//调用方</span></span><br><span class="line"><span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testMain</span><span class="params">()</span>&#123;</span><br><span class="line">    A(a1); <span class="comment">//方法A</span></span><br><span class="line">    testB();    <span class="comment">//调用testB</span></span><br><span class="line">    <span class="keyword">throw</span> Exception;     <span class="comment">//发生异常抛出(1)</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        testB();    <span class="comment">//调用testB</span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">        e.printStackTrace();	<span class="comment">//打印异常信息</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(e.getMessage());	<span class="comment">//是否抛出-调用方都一起回滚(2)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//被调用方</span></span><br><span class="line"><span class="meta">@Transactional(propagation = Propagation.REQUIRES_NEW)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testB</span><span class="params">()</span>&#123;</span><br><span class="line">    B(b1);  <span class="comment">//方法B1</span></span><br><span class="line">    <span class="keyword">throw</span> Exception;     <span class="comment">//发生异常抛出(2)</span></span><br><span class="line">    B(b2);  <span class="comment">//方法B2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//1.调用方发生异常(1)，全部回滚</span></span><br><span class="line"><span class="comment">//2.被调用方发生异常(2)，全部回滚</span></span><br><span class="line"><span class="comment">//调用方</span></span><br><span class="line"><span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testMain</span><span class="params">()</span>&#123;</span><br><span class="line">    A(a1); <span class="comment">//方法A</span></span><br><span class="line">    testB();    <span class="comment">//调用testB</span></span><br><span class="line">    <span class="keyword">throw</span> Exception;     <span class="comment">//发生异常抛出(1)</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        testB();    <span class="comment">//调用testB</span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">        e.printStackTrace();	<span class="comment">//打印异常信息</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(e.getMessage());	<span class="comment">//是否抛出-调用方都一起回滚(2)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//被调用方</span></span><br><span class="line"><span class="meta">@Transactional(propagation = Propagation.REQUIRED)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testB</span><span class="params">()</span>&#123;</span><br><span class="line">    B(b1);  <span class="comment">//方法B1</span></span><br><span class="line">    <span class="keyword">throw</span> Exception;     <span class="comment">//发生异常抛出(2)</span></span><br><span class="line">    B(b2);  <span class="comment">//方法B2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<hr>
+<h3 id="Scene"><a href="#Scene" class="headerlink" title="Scene"></a>Scene</h3>]]></content>
+      <categories>
+        <category>JAVA</category>
+      </categories>
+      <tags>
+        <tag>Springboot</tag>
       </tags>
   </entry>
 </search>
