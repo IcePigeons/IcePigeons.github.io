@@ -35,87 +35,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java模块化[1.0]-如何裁剪Jre减少体积</title>
-    <url>/IcePigeons.github.io/2023/09/11/Java%E6%A8%A1%E5%9D%97%E5%8C%96-1-0-%E5%A6%82%E4%BD%95%E8%A3%81%E5%89%AAJre%E5%87%8F%E5%B0%91%E4%BD%93%E7%A7%AF/</url>
-    <content><![CDATA[<h3 id="Demo-示例"><a href="#Demo-示例" class="headerlink" title="Demo 示例"></a>Demo 示例</h3><ul>
-<li>jmod 文件是用来打包 jre 的</li>
-</ul>
-<p>目录结构</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Idea目录结构(maven项目/普通java项目)</span><br><span class="line">-java-module</span><br><span class="line">  -src/main/java</span><br><span class="line">  	-com/example/Main.java</span><br><span class="line">  	-module-java.info</span><br><span class="line">  -resources</span><br><span class="line">-output #输出目录</span><br><span class="line">-bin 	#编译后的文件</span><br><span class="line">-hello.jar	#jar包</span><br><span class="line">-hello.jmod	#jmod</span><br></pre></td></tr></table></figure>
-
-<p>Main.java</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>module-info.java</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module com.example &#123;</span><br><span class="line">    exports com.example;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>编译</p>
-<ul>
-<li>只需基础 jdk 的包，则直接执行</li>
-</ul>
-<p><code> javac -d .\bin .\src\main\java\module-info.java .\src\main\java\com\example\*.java</code></p>
-<ul>
-<li>引入第三方包，设置–module-path 依赖包来源地址，–add-modules 设置依赖包名称<ul>
-<li>maven 项目可以通过<strong>mvn dependency:copy-dependencies -DoutputDirectory&#x3D;lib</strong>直接导出项目依赖的包到根目录 lib 文件夹下</li>
-</ul>
-</li>
-</ul>
-<p><code> javac --module-path .\lib --add-modules fastjson,javafx.controls -d .\bin .\src\main\java\module-info.java .\src\main\java\com\example\*.java</code></p>
-</li>
-<li><p>打包</p>
-<p><code> jar --create --file hello.jar --main-class com.example.Main -C bin .</code></p>
-</li>
-<li><p>创建模块</p>
-<p><code>jmod create --class-path .\hello.jar hello.jmod</code></p>
-</li>
-<li><p>打包 Jre</p>
-<p><code> jlink --module-path .\hello.jmod --add-modules java.base,com.example --output output</code></p>
-</li>
-</ul>
-<hr>
-<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/479619633">https://zhuanlan.zhihu.com/p/479619633</a></p>
-<p>模块化对于第三包的处理：需要对其进行模块化</p>
-<ul>
-<li>虽然有自动模块和未命名模块的操作，但是 jlink 不支持自动模块打包，也就是说还是需要对非模块化包进行模块化才能打包</li>
-</ul>
-<hr>
-<h3 id="打包解决方案"><a href="#打包解决方案" class="headerlink" title="打包解决方案"></a>打包解决方案</h3><h4 id="TimiExe4FX-第三方软件"><a href="#TimiExe4FX-第三方软件" class="headerlink" title="TimiExe4FX(第三方软件)"></a>TimiExe4FX(第三方软件)</h4><ul>
-<li>实现打包纯 exe 启动器</li>
-</ul>
-<h4 id="maven-打包插件"><a href="#maven-打包插件" class="headerlink" title="maven 打包插件"></a>maven 打包插件</h4><p>开源地址：<a href="https://github.com/fvarrui/JavaPackager">https://github.com/fvarrui/JavaPackager</a></p>
-<ol>
-<li>引入插件</li>
-<li>执行 mvn package</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.github.fvarrui<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javapackager<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>package<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 启动类 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>path.to.your.mainClass<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 绑定裁剪jre --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">bundleJre</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bundleJre</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 生成exe安装包,需要安装Wix或者ISCC软件 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">generateInstaller</span>&gt;</span>true<span class="tag">&lt;/<span class="name">generateInstaller</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 管理员权限启动 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">administratorRequired</span>&gt;</span>false<span class="tag">&lt;/<span class="name">administratorRequired</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 平台 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">platform</span>&gt;</span>auto|linux|mac|windows<span class="tag">&lt;/<span class="name">platform</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!-- 添加资源打包到根目录 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">additionalResources</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 可以包含多个 --&gt;</span></span><br><span class="line">            		<span class="tag">&lt;<span class="name">additionalResource</span>&gt;</span>src/main/resources/config.properties<span class="tag">&lt;/<span class="name">additionalResource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">additionalResources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">linuxConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">linuxConfig</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">macConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">macConfig</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">winConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">winConfig</span>&gt;</span></span><br><span class="line">                [...]</span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>模块化</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/IcePigeons.github.io/2023/09/04/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Mysql实践[一]数据聚合</title>
     <url>/IcePigeons.github.io/2024/04/17/Mysql%E5%AE%9E%E8%B7%B5%5B%E4%B8%80%5D%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88/</url>
     <content><![CDATA[<h3 id="1、AB表多列数据聚合"><a href="#1、AB表多列数据聚合" class="headerlink" title="1、AB表多列数据聚合"></a>1、AB表多列数据聚合</h3><p><strong><u>group by分组的理解：根据某字段进行分组，组内可能包含许多行，然后可以对这些行进行聚合操作(MAX、AVG等)</u></strong></p>
@@ -196,6 +115,87 @@
       <tags>
         <tag>Mysql</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Java模块化[1.0]-如何裁剪Jre减少体积</title>
+    <url>/IcePigeons.github.io/2023/09/11/Java%E6%A8%A1%E5%9D%97%E5%8C%96-1-0-%E5%A6%82%E4%BD%95%E8%A3%81%E5%89%AAJre%E5%87%8F%E5%B0%91%E4%BD%93%E7%A7%AF/</url>
+    <content><![CDATA[<h3 id="Demo-示例"><a href="#Demo-示例" class="headerlink" title="Demo 示例"></a>Demo 示例</h3><ul>
+<li>jmod 文件是用来打包 jre 的</li>
+</ul>
+<p>目录结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Idea目录结构(maven项目/普通java项目)</span><br><span class="line">-java-module</span><br><span class="line">  -src/main/java</span><br><span class="line">  	-com/example/Main.java</span><br><span class="line">  	-module-java.info</span><br><span class="line">  -resources</span><br><span class="line">-output #输出目录</span><br><span class="line">-bin 	#编译后的文件</span><br><span class="line">-hello.jar	#jar包</span><br><span class="line">-hello.jmod	#jmod</span><br></pre></td></tr></table></figure>
+
+<p>Main.java</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>module-info.java</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">module com.example &#123;</span><br><span class="line">    exports com.example;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>编译</p>
+<ul>
+<li>只需基础 jdk 的包，则直接执行</li>
+</ul>
+<p><code> javac -d .\bin .\src\main\java\module-info.java .\src\main\java\com\example\*.java</code></p>
+<ul>
+<li>引入第三方包，设置–module-path 依赖包来源地址，–add-modules 设置依赖包名称<ul>
+<li>maven 项目可以通过<strong>mvn dependency:copy-dependencies -DoutputDirectory&#x3D;lib</strong>直接导出项目依赖的包到根目录 lib 文件夹下</li>
+</ul>
+</li>
+</ul>
+<p><code> javac --module-path .\lib --add-modules fastjson,javafx.controls -d .\bin .\src\main\java\module-info.java .\src\main\java\com\example\*.java</code></p>
+</li>
+<li><p>打包</p>
+<p><code> jar --create --file hello.jar --main-class com.example.Main -C bin .</code></p>
+</li>
+<li><p>创建模块</p>
+<p><code>jmod create --class-path .\hello.jar hello.jmod</code></p>
+</li>
+<li><p>打包 Jre</p>
+<p><code> jlink --module-path .\hello.jmod --add-modules java.base,com.example --output output</code></p>
+</li>
+</ul>
+<hr>
+<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/479619633">https://zhuanlan.zhihu.com/p/479619633</a></p>
+<p>模块化对于第三包的处理：需要对其进行模块化</p>
+<ul>
+<li>虽然有自动模块和未命名模块的操作，但是 jlink 不支持自动模块打包，也就是说还是需要对非模块化包进行模块化才能打包</li>
+</ul>
+<hr>
+<h3 id="打包解决方案"><a href="#打包解决方案" class="headerlink" title="打包解决方案"></a>打包解决方案</h3><h4 id="TimiExe4FX-第三方软件"><a href="#TimiExe4FX-第三方软件" class="headerlink" title="TimiExe4FX(第三方软件)"></a>TimiExe4FX(第三方软件)</h4><ul>
+<li>实现打包纯 exe 启动器</li>
+</ul>
+<h4 id="maven-打包插件"><a href="#maven-打包插件" class="headerlink" title="maven 打包插件"></a>maven 打包插件</h4><p>开源地址：<a href="https://github.com/fvarrui/JavaPackager">https://github.com/fvarrui/JavaPackager</a></p>
+<ol>
+<li>引入插件</li>
+<li>执行 mvn package</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.github.fvarrui<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javapackager<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.7<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">phase</span>&gt;</span>package<span class="tag">&lt;/<span class="name">phase</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">goal</span>&gt;</span>package<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 启动类 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">mainClass</span>&gt;</span>path.to.your.mainClass<span class="tag">&lt;/<span class="name">mainClass</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 绑定裁剪jre --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">bundleJre</span>&gt;</span>true<span class="tag">&lt;/<span class="name">bundleJre</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 生成exe安装包,需要安装Wix或者ISCC软件 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">generateInstaller</span>&gt;</span>true<span class="tag">&lt;/<span class="name">generateInstaller</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 管理员权限启动 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">administratorRequired</span>&gt;</span>false<span class="tag">&lt;/<span class="name">administratorRequired</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!-- 平台 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">platform</span>&gt;</span>auto|linux|mac|windows<span class="tag">&lt;/<span class="name">platform</span>&gt;</span></span><br><span class="line">				<span class="comment">&lt;!-- 添加资源打包到根目录 --&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">additionalResources</span>&gt;</span></span><br><span class="line">                    <span class="comment">&lt;!-- 可以包含多个 --&gt;</span></span><br><span class="line">            		<span class="tag">&lt;<span class="name">additionalResource</span>&gt;</span>src/main/resources/config.properties<span class="tag">&lt;/<span class="name">additionalResource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">additionalResources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">linuxConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">linuxConfig</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">macConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">macConfig</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">winConfig</span>&gt;</span>...<span class="tag">&lt;/<span class="name">winConfig</span>&gt;</span></span><br><span class="line">                [...]</span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>模块化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/IcePigeons.github.io/2023/09/04/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>Spring事务场景</title>
