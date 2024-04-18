@@ -13,21 +13,22 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://icepigeons.github.io/IcePigeons.github.io/2023/09/04/hello-world/"/>
+    <link rel="canonical" href="https://icepigeons.github.io/IcePigeons.github.io/2024/04/17/mysql实践[一]数据聚合/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub . Q">
+        <meta name="description" content="1、AB表多列数据聚合group by分组的理解：根据某字段进行分组，组内可能包含许多行，然后可以对这些行进行聚合操作(MAX、AVG等)  A表关联B表的多条数据，实现A表利用三个字段存储B表的数据     ID 字段X 字段B1 字段B2 字段B3    1 A表记录         ID order(顺序) b(字段b) a_id(关联A表字段)    10 1 b1 1   11 2 b2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://icepigeons.github.io/IcePigeons.github.io/2023/09/04/hello-world/index.html">
+<meta property="og:title" content="Mysql实践[一]数据聚合">
+<meta property="og:url" content="https://icepigeons.github.io/IcePigeons.github.io/2024/04/17/Mysql%E5%AE%9E%E8%B7%B5[%E4%B8%80]%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to Hexo ! This is your very first post. Check documentation  for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting  or you can ask me on GitHub . Q">
+<meta property="og:description" content="1、AB表多列数据聚合group by分组的理解：根据某字段进行分组，组内可能包含许多行，然后可以对这些行进行聚合操作(MAX、AVG等)  A表关联B表的多条数据，实现A表利用三个字段存储B表的数据     ID 字段X 字段B1 字段B2 字段B3    1 A表记录         ID order(顺序) b(字段b) a_id(关联A表字段)    10 1 b1 1   11 2 b2">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-04T03:20:25.299Z">
-<meta property="article:modified_time" content="2023-09-04T03:20:25.300Z">
+<meta property="article:published_time" content="2024-04-17T06:13:10.000Z">
+<meta property="article:modified_time" content="2024-04-17T06:58:54.321Z">
 <meta property="article:author" content="BGZ">
+<meta property="article:tag" content="Mysql">
 <meta name="twitter:card" content="summary">
     
     
@@ -40,7 +41,7 @@
     
     <title>
         
-            Hello World -
+            Mysql实践[一]数据聚合 -
         
         仰望星空
     </title>
@@ -310,7 +311,7 @@
 
         <div class="article-title">
             
-                <h1 class="article-title-regular">Hello World</h1>
+                <h1 class="article-title-regular">Mysql实践[一]数据聚合</h1>
             
             </div>
             
@@ -330,20 +331,47 @@
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2023-09-04 11:20:25</span>
-        <span class="mobile">2023-09-04 11:20:25</span>
+        <span class="desktop">2024-04-17 14:13:10</span>
+        <span class="mobile">2024-04-17 14:13:10</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-09-04 11:20:25</span>
-            <span class="mobile">2023-09-04 11:20:25</span>
+            <span class="desktop">2024-04-17 14:58:54</span>
+            <span class="mobile">2024-04-17 14:58:54</span>
             <span class="hover-info">更新</span>
         </span>
     
 
     
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/IcePigeons.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/IcePigeons.github.io/tags/Mysql/">Mysql</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -365,19 +393,77 @@
 
 
         <div class="article-content markdown-body">
-            <p>Welcome to <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
+            <h3 id="1、AB表多列数据聚合"><a href="#1、AB表多列数据聚合" class="headerlink" title="1、AB表多列数据聚合"></a>1、AB表多列数据聚合</h3><p><strong><u>group by分组的理解：根据某字段进行分组，组内可能包含许多行，然后可以对这些行进行聚合操作(MAX、AVG等)</u></strong></p>
+<ul>
+<li>A表关联B表的多条数据，实现A表利用三个字段存储B表的数据</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>字段X</th>
+<th>字段B1</th>
+<th>字段B2</th>
+<th>字段B3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>A表记录</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>order(顺序)</th>
+<th>b(字段b)</th>
+<th>a_id(关联A表字段)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>1</td>
+<td>b1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2</td>
+<td>b2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>3</td>
+<td>NULL</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>实现B表的字段b的内容填到A表的B1、B2、B3，如下</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>字段X</th>
+<th>字段B1</th>
+<th>字段B2</th>
+<th>字段B3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>A表记录</td>
+<td>b1</td>
+<td>b2</td>
+<td>NULL</td>
+</tr>
+</tbody></table>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#关键在于分组和聚合函数，当<span class="keyword">group</span> <span class="keyword">by</span>时，Max聚合会从<span class="number">10</span><span class="number">-12</span>的记录中把关联B表的数据进行过滤赋值到A的字段中，如果不过滤则会随机取值赋给A表</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">IFNULL(<span class="built_in">MAX</span>(IF(B.order<span class="operator">=</span><span class="number">1</span>,B.b,<span class="keyword">NULL</span>)),<span class="keyword">NULL</span>) <span class="keyword">as</span> <span class="string">&#x27;字段B1&#x27;</span>,</span><br><span class="line">IFNULL(<span class="built_in">MAX</span>(IF(B.order<span class="operator">=</span><span class="number">2</span>,B.b,<span class="keyword">NULL</span>)),<span class="keyword">NULL</span>) <span class="keyword">as</span> <span class="string">&#x27;字段B2&#x27;</span>,</span><br><span class="line">IFNULL(<span class="built_in">MAX</span>(IF(B.order<span class="operator">=</span><span class="number">3</span>,B.b,<span class="keyword">NULL</span>)),<span class="keyword">NULL</span>) <span class="keyword">as</span> <span class="string">&#x27;字段B3&#x27;</span></span><br><span class="line"><span class="keyword">from</span> A</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> B <span class="keyword">on</span> A.id<span class="operator">=</span>B.a_id</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> A.id</span><br></pre></td></tr></table></figure></div>
 
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html" >Writing <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/server.html" >Server <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html" >Generating <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></div>
-
-<p>More info: <a class="link"   target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html" >Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
         </div>
 
@@ -385,18 +471,18 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> Hello World</li>
+        <li><strong>标题:</strong> Mysql实践[一]数据聚合</li>
         <li><strong>作者:</strong> 星尘X</li>
         <li><strong>创建于
-                :</strong> 2023-09-04 11:20:25</li>
+                :</strong> 2024-04-17 14:13:10</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-09-04 11:20:25
+                    :</strong> 2024-04-17 14:58:54
             </li>
         
         <li>
-            <strong>链接:</strong> https://redefine.ohevan.com/2023/09/04/hello-world/
+            <strong>链接:</strong> https://redefine.ohevan.com/2024/04/17/Mysql实践[一]数据聚合/
         </li>
         <li>
             <strong>
@@ -414,27 +500,35 @@
         
 
         
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/IcePigeons.github.io/tags/Mysql/">#Mysql</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
 
         
 
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                        rel="prev"
-                        href="/IcePigeons.github.io/2023/09/04/%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%9E%B6%E5%B7%A5%E5%85%B7/"
+                
+                    <div class="article-next">
+                        <a class="next"
+                        rel="next"
+                        href="/IcePigeons.github.io/2023/10/27/%E4%BA%8B%E5%8A%A1%E5%A4%B1%E6%95%88%E5%9C%BA%E6%99%AF/"
                         >
-                            <span class="left arrow-icon flex justify-center items-center">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </span>
                             <span class="title flex justify-center items-center">
-                                <span class="post-nav-title-item">自动化上下架工具</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="post-nav-title-item">Spring事务场景</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
                             </span>
                         </a>
                     </div>
-                
                 
             </div>
         
@@ -505,8 +599,8 @@
             <div class="post-toc-wrap">
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
-        <div class="page-title">Hello World</div>
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <div class="page-title">Mysql实践[一]数据聚合</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81AB%E8%A1%A8%E5%A4%9A%E5%88%97%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88"><span class="nav-text">1、AB表多列数据聚合</span></a></li></ol>
 
     </div>
 </div>

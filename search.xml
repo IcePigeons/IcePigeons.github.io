@@ -271,4 +271,86 @@
         <tag>模块化</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Mysql实践[一]数据聚合</title>
+    <url>/IcePigeons.github.io/2024/04/17/Mysql%E5%AE%9E%E8%B7%B5%5B%E4%B8%80%5D%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88/</url>
+    <content><![CDATA[<h3 id="1、AB表多列数据聚合"><a href="#1、AB表多列数据聚合" class="headerlink" title="1、AB表多列数据聚合"></a>1、AB表多列数据聚合</h3><p><strong><u>group by分组的理解：根据某字段进行分组，组内可能包含许多行，然后可以对这些行进行聚合操作(MAX、AVG等)</u></strong></p>
+<ul>
+<li>A表关联B表的多条数据，实现A表利用三个字段存储B表的数据</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>字段X</th>
+<th>字段B1</th>
+<th>字段B2</th>
+<th>字段B3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>A表记录</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>order(顺序)</th>
+<th>b(字段b)</th>
+<th>a_id(关联A表字段)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>1</td>
+<td>b1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>2</td>
+<td>b2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>12</td>
+<td>3</td>
+<td>NULL</td>
+<td>1</td>
+</tr>
+</tbody></table>
+<p>实现B表的字段b的内容填到A表的B1、B2、B3，如下</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>字段X</th>
+<th>字段B1</th>
+<th>字段B2</th>
+<th>字段B3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>A表记录</td>
+<td>b1</td>
+<td>b2</td>
+<td>NULL</td>
+</tr>
+</tbody></table>
+<div class="highlight-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="code"><pre><span class="line">#关键在于分组和聚合函数，当<span class="keyword">group</span> <span class="keyword">by</span>时，Max聚合会从<span class="number">10</span><span class="number">-12</span>的记录中把关联B表的数据进行过滤赋值到A的字段中，如果不过滤则会随机取值赋给A表</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">IFNULL(<span class="built_in">MAX</span>(IF(B.order<span class="operator">=</span><span class="number">1</span>,B.b,<span class="keyword">NULL</span>)),<span class="keyword">NULL</span>) <span class="keyword">as</span> <span class="string">&#x27;字段B1&#x27;</span>,</span><br><span class="line">IFNULL(<span class="built_in">MAX</span>(IF(B.order<span class="operator">=</span><span class="number">2</span>,B.b,<span class="keyword">NULL</span>)),<span class="keyword">NULL</span>) <span class="keyword">as</span> <span class="string">&#x27;字段B2&#x27;</span>,</span><br><span class="line">IFNULL(<span class="built_in">MAX</span>(IF(B.order<span class="operator">=</span><span class="number">3</span>,B.b,<span class="keyword">NULL</span>)),<span class="keyword">NULL</span>) <span class="keyword">as</span> <span class="string">&#x27;字段B3&#x27;</span></span><br><span class="line"><span class="keyword">from</span> A</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> B <span class="keyword">on</span> A.id<span class="operator">=</span>B.a_id</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> A.id</span><br></pre></td></tr></table></figure></div>
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+      </tags>
+  </entry>
 </search>
