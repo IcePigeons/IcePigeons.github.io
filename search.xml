@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Centos多版本Python环境共存</title>
-    <url>/IcePigeons.github.io/2023/09/06/CentOs%E5%A4%9A%E7%89%88%E6%9C%ACPython%E7%8E%AF%E5%A2%83%E5%85%B1%E5%AD%98/</url>
+    <url>/2023/09/06/CentOs%E5%A4%9A%E7%89%88%E6%9C%ACPython%E7%8E%AF%E5%A2%83%E5%85%B1%E5%AD%98/</url>
     <content><![CDATA[<h3 id="安装流程"><a href="#安装流程" class="headerlink" title="安装流程"></a>安装流程</h3><ol>
 <li>安装ssl</li>
 <li>安装python</li>
@@ -36,7 +36,7 @@
   </entry>
   <entry>
     <title>Java模块化[1.0]-如何裁剪Jre减少体积</title>
-    <url>/IcePigeons.github.io/2023/09/11/Java%E6%A8%A1%E5%9D%97%E5%8C%96-1-0-%E5%A6%82%E4%BD%95%E8%A3%81%E5%89%AAJre%E5%87%8F%E5%B0%91%E4%BD%93%E7%A7%AF/</url>
+    <url>/2023/09/11/Java%E6%A8%A1%E5%9D%97%E5%8C%96-1-0-%E5%A6%82%E4%BD%95%E8%A3%81%E5%89%AAJre%E5%87%8F%E5%B0%91%E4%BD%93%E7%A7%AF/</url>
     <content><![CDATA[<h3 id="Demo-示例"><a href="#Demo-示例" class="headerlink" title="Demo 示例"></a>Demo 示例</h3><ul>
 <li>jmod 文件是用来打包 jre 的</li>
 </ul>
@@ -99,7 +99,7 @@
   </entry>
   <entry>
     <title>Spring事务场景</title>
-    <url>/IcePigeons.github.io/2023/10/27/%E4%BA%8B%E5%8A%A1%E5%A4%B1%E6%95%88%E5%9C%BA%E6%99%AF/</url>
+    <url>/2023/10/27/%E4%BA%8B%E5%8A%A1%E5%A4%B1%E6%95%88%E5%9C%BA%E6%99%AF/</url>
     <content><![CDATA[<div align="center">
     <img  
                      lazyload
@@ -213,7 +213,7 @@
   </entry>
   <entry>
     <title>Hello World</title>
-    <url>/IcePigeons.github.io/2023/09/04/hello-world/</url>
+    <url>/2023/09/04/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a class="link"   href="https://hexo.io/" >Hexo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>! This is your very first post. Check <a class="link"   href="https://hexo.io/docs/" >documentation <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> for more info. If you get any problems when using Hexo, you can find the answer in <a class="link"   href="https://hexo.io/docs/troubleshooting.html" >troubleshooting <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> or you can ask me on <a class="link"   href="https://github.com/hexojs/hexo/issues" >GitHub <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure></div>
 
@@ -231,7 +231,7 @@
   </entry>
   <entry>
     <title>自动化上下架工具</title>
-    <url>/IcePigeons.github.io/2023/09/04/%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%9E%B6%E5%B7%A5%E5%85%B7/</url>
+    <url>/2023/09/04/%E8%87%AA%E5%8A%A8%E5%8C%96%E4%B8%8A%E4%B8%8B%E6%9E%B6%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>依赖于 springboot 和 mybatisPlus 实现的一个自动定时扫描上下架时间，并切换数据状态的工具，主要是减少开发中的重复代码，能够更专注于写更多有意义的代码，并且简历上也能好看点。</p>
 <h2 id="开发版本"><a href="#开发版本" class="headerlink" title="开发版本"></a>开发版本</h2><ul>
 <li>JDK1.8</li>
@@ -273,7 +273,7 @@
   </entry>
   <entry>
     <title>Mysql实践[一]数据聚合</title>
-    <url>/IcePigeons.github.io/2024/04/17/Mysql%E5%AE%9E%E8%B7%B5%5B%E4%B8%80%5D%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88/</url>
+    <url>/2024/04/17/Mysql%E5%AE%9E%E8%B7%B5%5B%E4%B8%80%5D%E6%95%B0%E6%8D%AE%E8%81%9A%E5%90%88/</url>
     <content><![CDATA[<h3 id="1、AB表多列数据聚合"><a href="#1、AB表多列数据聚合" class="headerlink" title="1、AB表多列数据聚合"></a>1、AB表多列数据聚合</h3><p><strong><u>group by分组的理解：根据某字段进行分组，组内可能包含许多行，然后可以对这些行进行聚合操作(MAX、AVG等)</u></strong></p>
 <ul>
 <li>A表关联B表的多条数据，实现A表利用三个字段存储B表的数据</li>
